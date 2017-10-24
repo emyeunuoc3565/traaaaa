@@ -1,0 +1,135 @@
+<div ng-controller="cardCtr" class="container">
+	<div class="bg-pin" ng-if="pinsList.length">
+		<div class="row">	
+			<div class="col-sm-6 col-md-4" ng-repeat="card in pinsList">
+				<div class="card-wrapper relative">
+					<h3>{{card.title}}</h3>
+					<div class="mg-top-10">
+						<span ng-repeat="t in card.tag" class="relative btn btn-info mg-5-10">
+							<span ng-bind-html="t.name" class="tag-wrapper"></span>
+						</span>
+					</div>
+					<div>
+						Tạo ngày: {{card.createdAt | datetime}}
+					</div>
+					<div>
+						Update: {{card.updatedAt | datetime}}
+					</div>
+					<div class="remove-tag opa">
+						<button class="btn btn-default btn-sm" ng-click="pin(card)">
+							<i class="fa fa-tags" ng-if="!card.pin"></i>
+							<i class="fa fa-unlock" ng-if="card.pin"></i>
+						</button>
+						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal" ng-click="showUpdate(card)">
+							<i class="fa fa-pencil"></i>
+						</button>
+						<button class="btn btn-danger btn-sm" ng-click="deleteCard(card)">
+							<i class="fa fa-times"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr class="style18" ng-if="pinsList.length">
+	<div class="row">
+		<div class="col-sm-6 col-md-4" ng-repeat="card in cards">
+			<div class="card-wrapper relative">
+				<h3>{{card.title}}</h3>
+				<div class="mg-top-10">
+					<span ng-repeat="t in card.tag" class="relative btn btn-info mg-5-10">
+						<span ng-bind-html="t.name" class="tag-wrapper"></span>
+					</span>
+				</div>
+				<div>
+					Tạo ngày: {{card.createdAt | datetime}}
+				</div>
+				<div>
+					Update: {{card.updatedAt | datetime}}
+				</div>
+				<div class="remove-tag opa">
+					<button class="btn btn-default btn-sm" ng-click="pin(card)">
+						<i class="fa fa-tags" ng-if="!card.pin"></i>
+						<i class="fa fa-unlock" ng-if="card.pin"></i>
+					</button>
+					<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal" ng-click="showUpdate(card)">
+						<i class="fa fa-pencil"></i>
+					</button>
+					<button class="btn btn-danger btn-sm" ng-click="deleteCard(card)">
+						<i class="fa fa-times"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div ng-init="showAdd = false">
+		<button class="btn btn-danger addBtn" ng-click="showAdd = !showAdd"><i class="fa fa-plus"></i> Add a note</button>
+	</div>
+	<div ng-show="showAdd">
+		<hr class="style18">
+		<div class="row">
+			<div class="col-sm-6">
+				<input ng-model="add.title" class="form-control">
+				<div class="mg-top-10">
+					<span ng-repeat="t in add.tags" class="relative btn btn-info mg-5-10">
+						<span ng-bind-html="t.name" class="tag-wrapper"></span>
+						<i class="fa fa-times remove-tag" ng-click="rmAddTag($index)"></i>
+					</span>
+				</div>
+				<div class="mg-top-10">
+					<button class="btn btn-warning" ng-click="submitAdd()">Submit</button>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<button class="btn btn-primary" ng-click="addTag()">Add a tag</button>
+				<div trumbowyg-ng
+					ng-model="tag"
+					ng-disabled="true"
+					editor-config="{btns: ['viewHTML','bold','italic','insertImage','|','link']}">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div id="updateModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-lg">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">{{updateCard.title}}</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="row">
+				<div class="col-sm-6">
+					<input ng-model="updateCard.title" class="form-control">
+					<div class="mg-top-10">
+						<span ng-repeat="t in updateCard.tag" class="relative btn btn-info mg-5-10">
+							<span ng-bind-html="t.name" class="tag-wrapper"></span>
+							<i class="fa fa-times remove-tag" ng-click="rmUpdateTag($index)"></i>
+						</span>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<button class="btn btn-primary" ng-click="addUpdateTag()">Add a tag</button>
+					<div trumbowyg-ng
+						ng-model="updatetag"
+						ng-disabled="true"
+						editor-config="{btns: ['viewHTML','bold','italic','insertImage','|','link']}">
+					</div>
+				</div>
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-warning" ng-click="submitUpdate()">Submit</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+</div>
