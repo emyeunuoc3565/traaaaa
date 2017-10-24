@@ -80,9 +80,7 @@ module.exports.connections = {
     password: process.env.PG_PASSWORD || 'd8b7a70c3e79388307a5765868863b4cc31f5efedef59eb16adbb916ff6eb8c4',
     database: process.env.PG_DATABASE || 'darf515qfd2qjj',
     port: process.env.PG_PORT || 5432,
-    ssl: {
-      rejectUnauthorized: false
-    }
+    ssl: true
   }
 
 
