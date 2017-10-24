@@ -48,11 +48,12 @@ module.exports = {
 		Card.find({
 			pin:true
 		}).populateAll().exec(function(err, _plist){
+			if(err) return res.json({message:_err});
 			Card.find({
 				where:{},
 				sort:'createdAt DESC'
-			}).populateAll().exec(function(err, list){
-				if(err) return res.json({message:'error'});
+			}).populateAll().exec(function(_err, list){
+				if(_err) return res.json({message:_err});
 				return res.json({cards: list, pins: _plist, message:'success'});
 			})
 		})

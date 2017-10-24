@@ -24,10 +24,6 @@ module.exports = function(grunt) {
     css: {
       src: require('../pipeline').cssFilesToInject,
       dest: '.tmp/public/concat/production.css'
-    },
-    gopAngular:{
-      src:'assets/app/**/*.js',
-      dest:'assets/js/all.js'
     }
   });
 
