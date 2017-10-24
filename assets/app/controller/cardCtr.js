@@ -2,6 +2,7 @@
 	var cardCtr = function($scope, $http){
 		$scope.getData = function(){
 			$http.post("/get-card",{},{}).then(function(res){
+				console.log(res)
 	  			if(res.data.message == 'success'){
 	  				$scope.cards = res.data.cards;
 	  				$scope.pinsList = res.data.pins;
