@@ -48,7 +48,7 @@ module.exports = {
 		Card.find({
 			pin:true
 		}).populateAll().exec(function(err, _plist){
-			if(err) return res.json({message:_err});
+			if(err) return res.json({message:err});
 			Card.find({
 				where:{},
 				sort:'createdAt DESC'
