@@ -1,5 +1,5 @@
 (function () {
-	myApp.controller('cardCtr', function($scope, $http){
+	var cardCtr = function($scope, $http){
 		$scope.getData = function(){
 			$http.post("/get-card",{},{}).then(function(res){
 	  			if(res.data.message == 'success'){
@@ -107,5 +107,7 @@
 	  		})
 		}
 
-	});
+	}
+	cardCtr.$inject = ['$scope','$http'];
+	myApp.controller('cardCtr',cardCtr );
 })();

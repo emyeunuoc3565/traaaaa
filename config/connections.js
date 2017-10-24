@@ -76,10 +76,10 @@ module.exports.connections = {
   ***************************************************************************/
   somePostgresqlServer: {
     adapter: 'sails-postgresql',
-    host: 'localhost',
-    user: 'ducnguyen', // optional
-    password: 'abc123', // optional
-    database: 'trading' //optional
+    host: 'ec2-54-163-245-150.compute-1.amazonaws.com',
+    user: 'vpzfranrcebcgp', // optional
+    password: 'd8b7a70c3e79388307a5765868863b4cc31f5efedef59eb16adbb916ff6eb8c4', // optional
+    database: 'darf515qfd2qjj' //optional
   }
 
 
