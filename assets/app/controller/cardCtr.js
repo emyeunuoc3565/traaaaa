@@ -1,6 +1,7 @@
 (function () {
 	var cardCtr = function($scope, $http){
 		$scope.getData = function(){
+			if(localStorage.token != "01639919632") return;
 			$http.post("/get-card",{},{}).then(function(res){
 				console.log(res)
 	  			if(res.data.message == 'success'){
