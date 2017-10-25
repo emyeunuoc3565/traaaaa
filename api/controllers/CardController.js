@@ -46,7 +46,8 @@ module.exports = {
 
 	list: function(req, res){
 		Card.find({
-			pin:true
+			where:{pin:true},
+			sort:'updatedAt DESC'
 		}).populateAll().exec(function(err, _plist){
 			if(err) return res.json({message:err});
 			Card.find({
