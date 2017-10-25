@@ -74,12 +74,11 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
   somePostgresqlServer: {
-    module: 'sails-postgresql',
-    host: process.env.PG_HOSTNAME || 'ec2-54-163-245-150.compute-1.amazonaws.com',
-    user: process.env.PG_USER || 'vpzfranrcebcgp',
-    password: process.env.PG_PASSWORD || 'd8b7a70c3e79388307a5765868863b4cc31f5efedef59eb16adbb916ff6eb8c4',
-    database: process.env.PG_DATABASE || 'darf515qfd2qjj',
-    port: process.env.PG_PORT || 5432,
+   adapter: 'sails-postgresql',
+  host: 'ec2-54-235-88-58.compute-1.amazonaws.com',
+  user: 'jdfjhzpvzyyppr', // optional
+  password: '72909036f033359065a0f35709d6665f2d33b654b5cf0c979c9f47b7e1d8a908', // optional
+  database: 'd754g9h4g0q6uq' //optional
     ssl: true
   }
 
